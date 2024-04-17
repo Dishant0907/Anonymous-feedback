@@ -89,7 +89,9 @@ const Dashboard = () => {
             setUserName(response?.data?.currentUser?.username);
             setFeedBack(response?.data?.allFeedback);
             setIsAcceptingMessage(response?.data?.currentUser?.isAcceptingMessage)
-            setUserUrl(`http://localhost:3000/${response?.data?.currentUser?.username}`);
+            const tailUrl = response?.data?.currentUser?.username
+            const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+            setUserUrl(`${baseUrl}/${tailUrl}`);
 
         })()
 
@@ -112,12 +114,12 @@ const Dashboard = () => {
     // },2000)
     return (
         <>
-            <div className="bg-[#F7DCB9] w-full min-h-screen ">
+            <div className="  bg-[#F7DCB9] w-full min-h-screen   ">
                 <div className="flex justify-between">
-                    <div className="ml-[4rem] pt-[2rem] ">
-                        <p className="text-5xl font-semibold text-[#754c22] ">{greet}, {username}...</p>
+                    <div className="ml-[2rem] pt-[4rem] laptop:ml-[4rem] laptop:pt-[2rem] ">
+                        <p className="text-4xl  laptop:text-5xl font-semibold text-[#754c22] ">{greet}, {username}...</p>
                     </div>
-                    <div className="mt-[2rem] mr-[5rem] p-1 px-2 pb-1 cursor-pointer ">
+                    <div className=" m-2 ml-[3rem] laptop:mt-[2rem] laptop:mr-[5rem] laptop:p-1 laptop:px-2 laptop:pb-1 cursor-pointer ">
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
@@ -145,7 +147,7 @@ const Dashboard = () => {
                 </div>
 
 
-                <div className=" bg-green- mt-12 w-full h-14 py-3 px-[30rem] " >
+                <div className=" p-3 laptop:mt-12 w-full laptop:h-14 laptop:py-3 laptop:px-[30rem] " >
                     <div onClick={() => handleCopy(userUrl)} className="bg-red- h-9 border border-[#DEAC80] hover:bg-[#B99470] rounded-md p-2  pl-4 flex justify-between cursor-copy ">
                         <p>{userUrl}</p>
 
@@ -160,23 +162,25 @@ const Dashboard = () => {
                 </div>
 
                 {/* this is message card */}
-                <p className="ml-[10rem] text-2xl mt-7 text-[#754c22] font-bold">Anonymous Feedback...</p>
-                <div className="bg-[#F7DCB9] w-full mt-4 h-[32rem] px-[10rem]">
+                <p className="ml-[3rem] mt-[3rem] laptop:ml-[10rem] text-2xl laptop:mt-7 text-[#754c22] font-bold">Anonymous Feedback...</p>
+                <div className="p-3 bg-[#F7DCB9] h-[28rem] w-full laptop:mt-4  laptop:h-[32rem] laptop:px-[10rem]">
                     <ScrollArea className="h-full w-full rounded-md border">
-                        <div className="h-full w-full bg-[#F7DCB9] border border-[#DEAC80] rounded-lg grid grid-cols-2 gap-4 p-3 overflow-auto    ">
+                        <div className="h-full w-full bg-[#F7DCB9] border border-[#DEAC80] rounded-lg grid laptop:grid-cols-2 gap-4 p-3 overflow-auto    ">
 
-                            {isLoading ? (<div className="bg-white h-auto w-full rounded-lg flex">
+                            {isLoading ? (<div className="bg-[#F7DCB9] h-auto w-full rounded-lg flex">
                                 <div className="m-4 text-[#754c22]">
                                     <Skeleton><BsPersonSquare size={64} /></Skeleton>
 
 
                                 </div>
-                                <div className="m-4  pt-2 pl-3  min-w-[35rem] shadow-md rounded-lg flex justify-between">
-                                    <div>
-                                        <Skeleton className="text-[16px] pb-3" />
-                                        <Skeleton className="text-[12px]"/>
+                                <div className="m-1 pt-2 pl-2 laptop:m-4  laptop:pt-2 laptop:pl-3  laptop:min-w-[35rem] shadow-md rounded-lg flex justify-between">
+                                    <div className="w-full">
+                                        <Skeleton className="text-[16px] text-[#754c22] w-full pb-3" />
+                                           
+                                        
+                                        <Skeleton className="text-[16px] text-[#754c22] "/>
                                     </div>
-                                    <div className="p-3">
+                                    <div className="p-3 text-[#754c22] cursor-pointer">
                                         <RiChatDeleteFill size={24} />
 
 
@@ -185,16 +189,16 @@ const Dashboard = () => {
                                 </div>
                             </div>) :
 
-                                feedback.length === 0 ? (<div className="bg-white h-auto w-full rounded-lg flex">
-                                    <div className="m-4">
+                                feedback.length === 0 ? (<div className="bg-[#F7DCB9] h-auto w-full rounded-lg flex">
+                                    <div className="m-1 mt-4 laptop:m-4 text-[#754c22]">
                                         <GrSystem  size={64} />
 
 
                                     </div>
-                                    <div className="m-4  pt-2 pl-3  min-w-[35rem] shadow-md rounded-lg flex justify-between">
+                                    <div className="m-1 pt-2 pl-2 laptop:m-4  laptop:pt-2 laptop:pl-3  laptop:min-w-[35rem] shadow-md rounded-lg flex justify-between">
                                         <div>
-                                            <p className="text-[16px] pb-3">There is no feedback yet from real person. <span className="font-bold">But you are awesome</span></p>
-                                            <p className="text-[12px]">
+                                            <p className="text-[16px] text-[#754c22] pb-3">There is no feedback yet from real person. <span className="font-bold">But you are awesome</span></p>
+                                            <p className="text-[12px] text-[#754c22]">
                                                 Messaged at {new Intl.DateTimeFormat('en-US', {
                                                     year: 'numeric',
                                                     month: 'long',
@@ -205,7 +209,7 @@ const Dashboard = () => {
                                                 }).format(new Date())}
                                             </p>
                                         </div>
-                                        <div className="p-3 ">
+                                        <div className="p-3 text-[#754c22] cursor-pointer">
                                             <RiChatDeleteFill size={24} />
 
 
@@ -215,12 +219,12 @@ const Dashboard = () => {
                                 </div>) : (
                                     feedback.map((singleFeedback) => (
                                         <div key={singleFeedback._id} className="bg-[#F7DCB9] h-auto w-full rounded-lg flex">
-                                            <div className="m-4 text-[#754c22]">
+                                            <div className="m-1 mt-4 laptop:m-4 text-[#754c22]">
                                                 <BsPersonSquare size={64} />
 
 
                                             </div>
-                                            <div className="m-4  pt-2 pl-3  min-w-[35rem] shadow-md rounded-lg flex justify-between">
+                                            <div className="m-1 pt-2 pl-2 laptop:m-4  laptop:pt-2 laptop:pl-3  laptop:min-w-[35rem] shadow-md rounded-lg flex justify-between">
                                                 <div>
                                                     <p className="text-[16px] text-[#754c22] pb-3">{singleFeedback.feedback}</p>
                                                     <p className="text-[12px] text-[#754c22]">

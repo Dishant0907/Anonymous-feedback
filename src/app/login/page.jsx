@@ -83,12 +83,10 @@ const Login = () => {
     return (
         <div className="min-h-screen bg-[#F2F5FC] flex items-center  justify-center">
             <div className="bg-white h-[32rem]  flex drop-shadow-xl rounded-[0.375rem]">
-                <div className="  hidden bg-white  items-center justify-center">
-                    <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1692727730.1678336007&semt=sph" className="max-h-full max-w-full object-contain" alt="image" />
-                </div>
-                <div className="laptop:w-1/2 bg-red-800 rounded-xl drop-shadow-lg p-6">
-                    <h1 className="text-4xl pl-1 pt-4 pb-4 text-white">Login</h1>
-                    <p className=" text-white p-1 pb-7">If you are already member, easy login</p>
+                
+                <div className=" bg-[#F7DCB9] rounded-xl drop-shadow-lg p-6">
+                    <h1 className="text-4xl text-[#754c22] pl-1 pt-4 pb-4 ">Login</h1>
+                    <p className=" text-[#754c22] p-1 pb-7">If you are already member, easy login</p>
 
                     <Formik
                         initialValues={{ username: '', password: '' }}
@@ -123,7 +121,7 @@ const Login = () => {
 
 
 
-                            <button type="submit" className="bg-black   w-full h-12 text-white hover:bg-gray-700 py-2 px-4 rounded-full">Sign Up</button>
+                            <button type="submit" className="bg-[#754c22]   w-full h-12 text-white hover:bg-gray-700 py-2 px-4 rounded-full">Login</button>
                         </Form>
 
                     </Formik>

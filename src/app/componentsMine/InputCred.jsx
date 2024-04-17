@@ -3,7 +3,7 @@ import { ErrorMessage,Field } from "formik";
 export const InputCred = ({id,placeholder,type,label,name}) => {
     return (
         <div className="mb-7 ">
-            <label className=" text-white block">{label}</label>
+            <label className=" text-[#754c22] block">{label}</label>
             < Field className=" text-black  p-3 rounded-md w-full focus:outline-none focus:to-blue-700"
                     type={type}
                     id={id}

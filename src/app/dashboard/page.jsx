@@ -31,7 +31,7 @@ const Dashboard = () => {
     const [userEmail, setUserEmail] = useState()
 
     const [username, setUserName] = useState();
-    const greetings = ['Namaste!', 'Welcome!', 'Hello!', 'Wassup!']
+    const greetings = ['Namaste!', 'Welcome!',  'Wassup!']
     const [greet, setGreet] = useState('Namaste!');
     const [userUrl, setUserUrl] = useState('');
     const [feedback, setFeedBack] = useState([])
@@ -90,12 +90,14 @@ const Dashboard = () => {
             setFeedBack(response?.data?.allFeedback);
             setIsAcceptingMessage(response?.data?.currentUser?.isAcceptingMessage)
             const tailUrl = response?.data?.currentUser?.username
-            const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+            const baseUrl = process.env.BASE_URL || 'https://anonymous-feedback-five.vercel.app';
             setUserUrl(`${baseUrl}/${tailUrl}`);
 
         })()
 
     }, [updateFeedbackTrigger])
+
+    const reversedFeedback = feedback.slice().reverse();
 
     useEffect(() => {
         setTimeout(() => {
@@ -148,7 +150,7 @@ const Dashboard = () => {
 
 
                 <div className=" p-3 laptop:mt-12 w-full laptop:h-14 laptop:py-3 laptop:px-[30rem] " >
-                    <div onClick={() => handleCopy(userUrl)} className="bg-red- h-9 border border-[#DEAC80] hover:bg-[#B99470] rounded-md p-2  pl-4 flex justify-between cursor-copy ">
+                    <div onClick={() => handleCopy(userUrl)} className="h-[3.7rem] laptop:h-9 border border-[#DEAC80] hover:bg-[#B99470] rounded-md p-2  pl-4 flex justify-between cursor-copy ">
                         <p>{userUrl}</p>
 
 
@@ -217,7 +219,7 @@ const Dashboard = () => {
 
                                     </div>
                                 </div>) : (
-                                    feedback.map((singleFeedback) => (
+                                    reversedFeedback.map((singleFeedback) => (
                                         <div key={singleFeedback._id} className="bg-[#F7DCB9] h-auto w-full rounded-lg flex">
                                             <div className="m-1 mt-4 laptop:m-4 text-[#754c22]">
                                                 <BsPersonSquare size={64} />

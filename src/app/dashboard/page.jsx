@@ -91,7 +91,7 @@ const Dashboard = () => {
             setIsAcceptingMessage(response?.data?.currentUser?.isAcceptingMessage)
             const tailUrl = response?.data?.currentUser?.username
             const baseUrl = process.env.BASE_URL || 'https://anonymous-feedback-five.vercel.app';
-            setUserUrl(`${baseUrl}/${tailUrl}`);
+            setUserUrl(`${baseUrl}/user/${tailUrl}`);
 
         })()
 

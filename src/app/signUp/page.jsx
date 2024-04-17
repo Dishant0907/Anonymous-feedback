@@ -21,6 +21,7 @@ import axios from "axios"
 
 
 
+
 const signUpValidationSchema = yup.object({
   email: yup.string().email().required('Email is required'),
   username: yup.string()
@@ -66,7 +67,9 @@ const SignUp = () => {
       
       
 
-      toast.success('You are registered,congo ')
+      toast.success('You are registered,congo ');
+      router.push('/login')
+      
     }
 
     else {

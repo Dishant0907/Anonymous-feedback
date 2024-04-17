@@ -56,18 +56,18 @@ const Login = () => {
 
             const { username, password } = values
 
-            const data = await signIn("credentials", { username: username, password: password, callbackUrl: 'http://localhost:3000/dashboard' })
+            const data = await signIn("credentials", { username: username, password: password, callbackUrl: '/dashboard' })
+            console.log("print",data)
 
+            router.push('/dashboard')
 
             if(data?.status === 200){
                 toast.success('Hold up,You are redirecting to dashboard ')
-                router.replace('/dashboard');
+                router.push('/dashboard');
         
               }
               
-              else{
-                router.push('/login')
-              }
+              
         } catch (error) {
             console.log(error.message)
 

@@ -45,6 +45,10 @@ const signUpValidationSchema = yup.object({
 const SignUp = () => {
 
   const router = useRouter()
+  const handleLogin = () => {
+    router.push('/login')
+  }
+  
 
 
 
@@ -97,7 +101,7 @@ const SignUp = () => {
         <div className=" bg-[#F7DCB9] h-[37rem] rounded-xl drop-shadow-lg p-6">
           <p className=" text-[#754c22] text-xl text-center underline font-bold">Incognito</p>
           <h1 className="text-4xl pl-1 pt-4 pb-4 text-[#754c22]">Sign Up</h1>
-          <p className=" text-[#754c22] p-1 pb-7">If you are already member, easy login</p>
+          <p className=" text-[#754c22] p-1 pb-7">If you are already member, easy <span onClick={handleLogin} className="underline font-bold text-blue-500">Login</span></p>
 
           <Formik
             initialValues={{email:'', username: '', password: '' }}
